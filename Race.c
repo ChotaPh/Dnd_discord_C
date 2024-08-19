@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 typedef struct races
 {
@@ -7,76 +8,64 @@ typedef struct races
     int r_STR, r_DEX, r_CON, r_WIS, r_INT, r_CHA;
 }races;
 
+// Function to create a new race
+races* Race_opt(char name[50], int r_STR, int r_DEX, int r_CON, int r_WIS, int r_INT, int r_CHA) 
+{
+    // Allocate memory for a new race
+    races* p = (races*)malloc(sizeof(races));
+    // Check if malloc succeeded
+    if (p == NULL) {
+        printf("Memory allocation failed!\n");
+        return NULL;
+    }
+
+    // Copy the name into the race structure
+    strcpy(p->name, name);
+
+    // Initialize the race attributes
+    p->r_STR = r_STR;
+    p->r_DEX = r_DEX;
+    p->r_CON = r_CON;
+    p->r_WIS = r_WIS;
+    p->r_INT = r_INT;
+    p->r_CHA = r_CHA;
+
+    return p;  // Return the pointer to the new race
+}
+
 void get_r_STR(struct races* race_ab, int r_str)
 {
     race_ab -> r_STR = r_str;
-    race_ab -> r_DEX = 0;
-    race_ab -> r_CON = 0; 
-    race_ab -> r_WIS = 0;
-    race_ab -> r_INT = 0;
-    race_ab -> r_CHA = 0;
 }
 
 void get_r_DEX(struct races* race_ab, int r_dex)
 {
-    race_ab -> r_STR = 0;
     race_ab -> r_DEX = r_dex;
-    race_ab -> r_CON = 0;
-    race_ab -> r_WIS = 0;
-    race_ab -> r_INT = 0;
-    race_ab -> r_CHA = 0;
 }
 
 void get_r_CON(struct races* race_ab, int r_con)
 {
-    race_ab -> r_STR = 0;
-    race_ab -> r_DEX = 0;
     race_ab -> r_CON = r_con;
-    race_ab -> r_WIS = 0;
-    race_ab -> r_INT = 0;
-    race_ab -> r_CHA = 0;
 }
 
 void get_r_WIS(struct races* race_ab, int r_wis)
 {
-    race_ab -> r_STR = 0;
-    race_ab -> r_DEX = 0;
-    race_ab -> r_CON = 0;
     race_ab -> r_WIS = r_wis;
-    race_ab -> r_INT = 0;
-    race_ab -> r_CHA = 0;
 }
 
 void get_r_INT(struct races* race_ab, int r_int)
 {
-    race_ab -> r_STR = 0;
-    race_ab -> r_DEX = 0;
-    race_ab -> r_CON = 0;
-    race_ab -> r_WIS = 0;
     race_ab -> r_INT = r_int;
-    race_ab -> r_CHA = 0;
 }
 
 void get_r_CHA(struct races* race_ab, int r_cha)
 {
-    race_ab -> r_STR = 0;
-    race_ab -> r_DEX = 0;
-    race_ab -> r_CON = 0;
-    race_ab -> r_WIS = 0;
-    race_ab -> r_INT = 0;
     race_ab -> r_CHA = r_cha;
 }
 
 void get_option_ab(struct races* race_ab,int ab_limit, int r_opt)
 {
     char opt_ab[50];
-    
-    race_ab -> r_STR = 0;
-    race_ab -> r_DEX = 0;
-    race_ab -> r_CON = 0;
-    race_ab -> r_WIS = 0;
-    race_ab -> r_INT = 0;
-    race_ab -> r_CHA = 0;
 
     for (int i = 0; i < ab_limit; i++)
     {
