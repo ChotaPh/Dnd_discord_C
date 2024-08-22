@@ -33,35 +33,35 @@ races* Race_opt(char name[50], int r_STR, int r_DEX, int r_CON, int r_WIS, int r
     return p;  // Return the pointer to the new race
 }
 
-void get_r_STR(struct races* race_ab, int r_str)
-{
-    race_ab -> r_STR = r_str;
-}
+//void get_r_STR(struct races* race_ab, int r_str)
+//{
+//    race_ab -> r_STR = r_str;
+//}
 
-void get_r_DEX(struct races* race_ab, int r_dex)
-{
-    race_ab -> r_DEX = r_dex;
-}
+//void get_r_DEX(struct races* race_ab, int r_dex)
+//{
+//    race_ab -> r_DEX = r_dex;
+//}
 
-void get_r_CON(struct races* race_ab, int r_con)
-{
-    race_ab -> r_CON = r_con;
-}
+//void get_r_CON(struct races* race_ab, int r_con)
+//{
+//    race_ab -> r_CON = r_con;
+//}
 
-void get_r_WIS(struct races* race_ab, int r_wis)
-{
-    race_ab -> r_WIS = r_wis;
-}
+//void get_r_WIS(struct races* race_ab, int r_wis)
+//{
+//    race_ab -> r_WIS = r_wis;
+//}
 
-void get_r_INT(struct races* race_ab, int r_int)
-{
-    race_ab -> r_INT = r_int;
-}
+//void get_r_INT(struct races* race_ab, int r_int)
+//{
+//    race_ab -> r_INT = r_int;
+//}
 
-void get_r_CHA(struct races* race_ab, int r_cha)
-{
-    race_ab -> r_CHA = r_cha;
-}
+//void get_r_CHA(struct races* race_ab, int r_cha)
+//{
+//    race_ab -> r_CHA = r_cha;
+//}
 
 void get_option_ab(struct races* race_ab,int ab_limit, int r_opt)
 {
@@ -73,17 +73,17 @@ void get_option_ab(struct races* race_ab,int ab_limit, int r_opt)
         scanf("%s", &opt_ab);
 
         if (strcmp(opt_ab, "STR") == 0)
-            race_ab->r_STR = r_opt;
+            race_ab->r_STR += r_opt;
         else if (strcmp(opt_ab, "DEX") == 0)
-            race_ab->r_DEX = r_opt;
+            race_ab->r_DEX += r_opt;
         else if (strcmp(opt_ab, "CON") == 0)
-            race_ab->r_CON = r_opt;
+            race_ab->r_CON += r_opt;
         else if (strcmp(opt_ab, "WIS") == 0)
-            race_ab->r_WIS = r_opt;
+            race_ab->r_WIS += r_opt;
         else if (strcmp(opt_ab, "INT") == 0)
-            race_ab->r_INT = r_opt;
+            race_ab->r_INT += r_opt;
         else if (strcmp(opt_ab, "CHA") == 0)
-            race_ab->r_CHA = r_opt;
+            race_ab->r_CHA += r_opt;
         else
             printf("Invalid choice!\n");
 
@@ -96,11 +96,11 @@ void call_elf_r(struct races* elf)
     
         if (strcmp(elf->name, "elf") == 0)
         {
-            get_r_DEX(elf, 2);
+            elf->r_DEX += 2;
         }
         else if (strcmp(elf->name, "dark elf") == 0)
         {
-            get_r_CHA(elf, 1);
+            elf->r_CHA += 1;
         } 
 }
 
@@ -126,7 +126,7 @@ void call_half_elf_r(struct races* half_elf)
     if(strcmp(half_elf->name, "half_elf") == 0)
     {
         get_option_ab(half_elf, 2, 1);
-        half_elf->r_CHA = 2;
+        half_elf->r_CHA += 2;
     }
 }
 
