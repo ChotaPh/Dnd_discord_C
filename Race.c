@@ -132,20 +132,26 @@ void call_half_elf_r(struct races* half_elf)
 
 int main()
 {
-    races elf = {"elf", 0, 0, 0, 0, 0, 0};
-    races human = {"finding", 0, 0, 0, 0, 0, 0};
-    races half_elf = {"half_elf", 0, 0, 0, 0, 0, 0};
+    races* elf = Race_opt("elf", 0, 0, 0, 0, 0, 0);
+    races* human = Race_opt("finding", 0, 0, 0, 0, 0, 0);
+    races* half_elf = Race_opt("half_elf", 0, 0, 0, 0, 0, 0);
 
-    call_elf_r(&elf);
+    call_elf_r(elf);
     printf("Elf stats: STR: %d, DEX: %d, CON: %d, WIS: %d, INT: %d, CHA: %d\n",
-           elf.r_STR, elf.r_DEX, elf.r_CON, elf.r_WIS, elf.r_INT, elf.r_CHA);
+           elf->r_STR, elf->r_DEX, elf->r_CON, elf->r_WIS, elf->r_INT, elf->r_CHA);
 
-    call_human_r(&human);
+    call_human_r(human);
     printf("Human finding stats: STR: %d, DEX: %d, CON: %d, WIS: %d, INT: %d, CHA: %d\n",
-           human.r_STR, human.r_DEX, human.r_CON, human.r_WIS, human.r_INT, human.r_CHA);
+           human->r_STR, human->r_DEX, human->r_CON, human->r_WIS, human->r_INT, human->r_CHA);
 
-    call_half_elf_r(&half_elf);
-    printf("half_elf finding stats: STR: %d, DEX: %d, CON: %d, WIS: %d, INT: %d, CHA: %d\n",
-           half_elf.r_STR, half_elf.r_DEX, half_elf.r_CON, half_elf.r_WIS, half_elf.r_INT, half_elf.r_CHA);
+    call_half_elf_r(half_elf);
+    printf("Half-elf stats: STR: %d, DEX: %d, CON: %d, WIS: %d, INT: %d, CHA: %d\n",
+           half_elf->r_STR, half_elf->r_DEX, half_elf->r_CON, half_elf->r_WIS, half_elf->r_INT, half_elf->r_CHA);
+           
+    // Free the allocated memory
+    free(elf);
+    free(human);
+    free(half_elf);
+
     return 0;
 }
